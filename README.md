@@ -35,18 +35,16 @@ ________________________________________________________________________________
 To crop the detected part and extract the text from detected part of the image few changes were made in the detect.py file.
 after the line 114 paste the following code.
 for k in range(len(det)):
-  x,y,w,h=int(xyxy[0]), int(xyxy[1]), int(xyxy[2] - xyxy[0]), int(xyxy[3] - xyxy[1])                   
-  img_ = im0.astype(np.uint8)
-  crop_img=img_[y:y+ h, x:x + w]                          
-                                
-                            #!!rescale image !!!
-  filename=label+ '{:}.jpg'.format(+1)
-  filepath="/content/yolov5"+filename
-  cv2.imwrite(filepath, crop_img)
-  reader = easyocr.Reader(['en']) # need to run only once to load model into memory
-  result = reader.readtext(filepath,detail=0)
-  print(result) 
-
+    x,y,w,h=int(xyxy[0]), int(xyxy[1]), int(xyxy[2] - xyxy[0]), int(xyxy[3] - xyxy[1])                   
+    img_ = im0.astype(np.uint8)
+    crop_img=img_[y:y+ h, x:x + w]                          
+    filename=label+ '{:}.jpg'.format(+1)
+    filepath="/content/yolov5"+filename
+    cv2.imwrite(filepath, crop_img)
+    reader = easyocr.Reader(['en']) # need to run only once to load model into memory
+    result = reader.readtext(filepath,detail=0)
+    print(result) 
+___________________________________________________________________________________________________________________________________________________
 
 step7:
 Now, that the model is trained to test execute the following cmd
