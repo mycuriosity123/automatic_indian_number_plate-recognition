@@ -34,7 +34,7 @@ python train.py --batch 16 --epochs 50 --data vehicle_plate.yaml  --cfg models/y
 __________________________________________________________________________________________________________________________________________________
 To crop the detected part and extract the text from detected part of the image few changes were made in the detect.py file.
 after the line 114 paste the following code.
-for k in range(len(det)):
+``` for k in range(len(det)):
     x,y,w,h=int(xyxy[0]), int(xyxy[1]), int(xyxy[2] - xyxy[0]), int(xyxy[3] - xyxy[1])                   
     img_ = im0.astype(np.uint8)
     crop_img=img_[y:y+ h, x:x + w]                          
@@ -44,6 +44,7 @@ for k in range(len(det)):
     reader = easyocr.Reader(['en']) # need to run only once to load model into memory
     result = reader.readtext(filepath,detail=0)
     print(result) 
+    ```
 ___________________________________________________________________________________________________________________________________________________
 
 step7:
